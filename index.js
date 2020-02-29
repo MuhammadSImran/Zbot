@@ -19,10 +19,6 @@ bot.on('message', msg => {
     if (msg.content === "asian") {
         msg.reply('cough cough');
     }
-    if (msg.content == "thanks zuhayr") {
-        msg.reply('Your welcome, you mortal human being.');
-
-    }
 });
 
 bot.on('guildMemberAdd', function (member) {
@@ -43,6 +39,20 @@ bot.on('message', message => {
 
 
     switch (args[0]) {
+        case 'help' :
+            message.reply(" !help - sends you commands list.");
+            message.reply(" !react - Zuahyr Reacts to you.");
+            message.reply(" !ping - Pong!");
+            message.reply(" !robotics - sends you robotics competion hunger games link.");
+            message.reply(" !Website - sends you a website link.");
+            message.reply(" !info version - sends you bot version.");
+            message.reply(" !grammerly - sends you grammerly accounts list.");
+            message.reply(" !user - shows user information.")
+            message.reply("          Mod Commands        ");
+            message.reply("!clear - clears messages");
+            message.reply("!kick - kicks a user from the server.");
+            message.reply("!ban - bans the user from the server.");
+            break;
         case 'react':
             message.channel.send('I will rule the world!').then(
             message.react('🤖')
@@ -143,45 +153,6 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
-        case 'play':
-
-            function play(connection, message){
-                var server = servers[message.guild.id];
-
-                server.dispatcher = connection.playStream(ytdl(server.queue[0],{filter: "audioonly"}));
-
-                server.queue.shift();
-
-                server.dispatcher.on("end", function(){
-                    if (server.queue[0]){
-                        play(connection, message);
-                    }else{
-                        connection.disconnect();
-                    }
-                });
-            }
-
-            if(!args[1]){
-                message.channel.send("You must enter a youtube url!");
-                return;
-            }
-            if(!message.member.voiceChannel){
-                message.channel.send("You must be in a channel");
-                return;
-            }
-            if(!servers[message.guild.id]) servers[message.guild.id] = {
-            queue: []
-            }
-            var server = servers[message.guild.id];
-
-            server.queue.push(args[1]);
-
-            if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
-
-                play(connection, message);
-            })
-            break;
-        case 'skip':
 
     }
 })
