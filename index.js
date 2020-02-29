@@ -53,6 +53,7 @@ bot.on('message', message => {
             message.reply("!kick - kicks a user from the server.");
             message.reply("!ban - bans the user from the server.");
             break;
+
         case 'react':
             message.channel.send('I will rule the world!').then(
             message.react('🤖')
@@ -71,7 +72,7 @@ bot.on('message', message => {
             }
             break;
         case 'kick':
-
+            if(!message.member.roles,find)(r=> r.name === "Mod") 
             const user = message.mentions.users.first();
 
             if (user) {
@@ -95,6 +96,7 @@ bot.on('message', message => {
             break;
 
             case 'ban':
+                if(!message.member.roles,find)(r=> r.name === "Mod") 
                 const banuser = message.mentions.users.first();
 
                 if (banuser) {
@@ -134,6 +136,7 @@ bot.on('message', message => {
                 message.channel.sendMessage('Invalid Arguments'); //Specific Channel
             }
         case 'clear':
+            if(!message.member.roles,find)(r=> r.name === "Mod") 
             if (!args[1]) return message.reply('Enter an amount of messages to delete') //Specific Channel
             message.channel.bulkDelete(args[1]);
             break;
