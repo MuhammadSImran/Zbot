@@ -21,12 +21,13 @@ bot.on('message', msg => {
     }
 });
 
-bot.on('guildMemberAdd', function (member) {
-    let defaultrole = member.guild.roles.find("name", "Homeless");
-    member.addRole(defaultrole);
-});
+//bot.on('guildMemberAdd', function (member) {
+
+//});
 
 bot.on('guildMemberAdd', member => {
+    let defaultrole = member.guild.roles.find("name", "Homeless");
+    member.addRole(defaultrole);
     const channel = member.guild.channels.find(channel => channel.name == "welcome");
     if (!channel) return;
     channel.send(`Welcome ${member}, to the Homeless Hallway!`)
