@@ -101,7 +101,11 @@ bot.on('message', message => {
             break;
 
             case 'ban':
-                
+                if(!message.member.roles.find(r => r.name === "Mod")){
+                    message.reply("You don't have access to this command!")
+                }
+                else
+                {
                 const banuser = message.mentions.users.first();
 
                 if (banuser) {
@@ -123,7 +127,7 @@ bot.on('message', message => {
                 } else {
                     message.channel.send('You need to specify a person.')
                 }
-    
+            }
                 break;
 
         case 'ping':
@@ -141,9 +145,14 @@ bot.on('message', message => {
                 message.channel.sendMessage('Invalid Arguments'); //Specific Channel
             }
         case 'clear':
-            
+            if(!message.member.roles.find(r => r.name === "Mod")){
+                message.reply("You don't have access to this command!")
+            }
+            else
+            {
             if (!args[1]) return message.reply('Enter an amount of messages to delete') //Specific Channel
             message.channel.bulkDelete(args[1]);
+            }
             break;
         case 'robotics':
             message.channel.sendMessage('http://brantsteele.net/hungergames/r.php?c=c81yhfAU');
