@@ -40,18 +40,18 @@ bot.on('message', message => {
 
     switch (args[0]) {
         case 'help' :
-            message.reply(" !help - sends you commands list.");
-            message.reply(" !react - Zuahyr Reacts to you.");
-            message.reply(" !ping - Pong!");
-            message.reply(" !robotics - sends you robotics competion hunger games link.");
-            message.reply(" !Website - sends you a website link.");
-            message.reply(" !info version - sends you bot version.");
-            message.reply(" !grammerly - sends you grammerly accounts list.");
-            message.reply(" !user - shows user information.")
-            message.reply("          Mod Commands        ");
-            message.reply("!clear - clears messages");
-            message.reply("!kick - kicks a user from the server.");
-            message.reply("!ban - bans the user from the server.");
+            message.author.send(" !help - sends you commands list.");
+            message.author.send(" !react - Zuahyr Reacts to you.");
+            message.author.send(" !ping - Pong!");
+            message.author.send(" !robotics - sends you robotics competion hunger games link.");
+            message.author.send(" !Website - sends you a website link.");
+            message.author.send(" !info version - sends you bot version.");
+            message.author.send(" !grammerly - sends you grammerly accounts list.");
+            message.author.send(" !user - shows user information.")
+            message.author.send("          Mod Commands        ");
+            message.author.send("!clear - clears messages");
+            message.author.send("!kick - kicks a user from the server.");
+            message.author.send("!ban - bans the user from the server.");
             break;
 
         case 'react':
@@ -72,7 +72,7 @@ bot.on('message', message => {
             }
             break;
         case 'kick':
-            if(!message.member.roles,find)(r=> r.name === "Mod") 
+            
             const user = message.mentions.users.first();
 
             if (user) {
@@ -96,7 +96,7 @@ bot.on('message', message => {
             break;
 
             case 'ban':
-                if(!message.member.roles,find)(r=> r.name === "Mod") 
+                
                 const banuser = message.mentions.users.first();
 
                 if (banuser) {
