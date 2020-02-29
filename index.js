@@ -136,7 +136,7 @@ bot.on('message', message => {
                 message.channel.sendMessage('Invalid Arguments'); //Specific Channel
             }
         case 'clear':
-            if(!message.member.roles,find)(r=> r.name === "Mod") 
+            
             if (!args[1]) return message.reply('Enter an amount of messages to delete') //Specific Channel
             message.channel.bulkDelete(args[1]);
             break;
