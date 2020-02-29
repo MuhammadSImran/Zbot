@@ -72,7 +72,11 @@ bot.on('message', message => {
             }
             break;
         case 'kick':
-            
+            if(!message.member.roles.find(r => r.name === "Mod")){
+                message.reply("You don't have access to this command!")
+            }
+            else
+            {
             const user = message.mentions.users.first();
 
             if (user) {
@@ -93,6 +97,7 @@ bot.on('message', message => {
             } else {
                 message.channel.send('You need to specify a person.')
             }
+        }
             break;
 
             case 'ban':
