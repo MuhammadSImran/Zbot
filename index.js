@@ -20,9 +20,6 @@ bot.on('message', msg => {
     if (msg.content.toLowerCase().startsWith === "asian") {
         msg.reply('cough cough');
     }
-    if (msg.content.toLowerCase().startsWith === "!play") {
-        msg.reply('cough cough');
-    }
 });
 
 
@@ -176,14 +173,16 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
+            
         case 'play':
+            let url = args[1];
             let VoiceChannel = message.guild.channels.find(channel => channel.id === '673584048576397335');
             if (VoiceChannel != null){
                 console.log(VoiceChannel.name +"was found and is a " + VoiceChannel.type + "channel.");
                 VoiceChannel.join()
                 .then (connection => {
                     console.log("Bot joined the channel.");
-                    const stream = ytdl(args[1], { filter : 'audioonly'});
+                    const stream = ytdl(url, { filter : 'audioonly'});
                     const dispatcher = connection.playStream(stream, streamOptions);
 
 
