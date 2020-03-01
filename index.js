@@ -4,6 +4,7 @@ const bot = new Discord.Client();
 var servers = {};
 
 const ytdl = require('ytdl-core');
+const streamOptions = {seek: 0, volume: 1};
 
 const prefix = '!';
 
@@ -16,7 +17,10 @@ bot.on('ready', () => {
     bot.user.setActivity('AutoDesk Inventor Pro 2020', { type: 'PLAYING' }).catch(console.error);
 });
 bot.on('message', msg => {
-    if (msg.content === "asian") {
+    if (msg.content.toLowerCase().startsWith === "asian") {
+        msg.reply('cough cough');
+    }
+    if (msg.content.toLowerCase().startsWith === "!play") {
         msg.reply('cough cough');
     }
 });
@@ -172,6 +176,23 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
+        case 'play':
+            let VoiceChannel = message.guild.channels.find(channel => channel.id === '673584048576397335');
+            if (VoiceChannel != null){
+                console.log(VoiceChannel.name +"was found and is a " + VoiceChannel.type + "channel.");
+                VoiceChannel.join()
+                .then (connection => {
+                    console.log("Bot joined the channel.");
+                    const stream = ytdl(args[1], { filter : 'audioonly'});
+                    const dispatcher = connection.playStream(stream, streamOptions);
+
+
+                    dispatcher.on('end', () => {
+                        VoiceChannel.leave();
+                    })
+                })
+                .catch();
+            }
 
     }
 })
