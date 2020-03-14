@@ -1,10 +1,14 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
+const{
+    Client,
+    Attachment
+
+} = require('discord.js');
+const bot = new Client();
 
 var servers = {};
 
 const ytdl = require('ytdl-core');
-const streamOptions = {seek: 0, volume: 100};
+
 
 const prefix = '!';
 
