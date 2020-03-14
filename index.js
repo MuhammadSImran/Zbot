@@ -177,9 +177,7 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
-            
-            case 'play':
-
+        case 'play':
 
                 function play(connection,message){
         
@@ -229,12 +227,12 @@ bot.on('message', message => {
                 break;
         
         
-                case 'skip':
+        case 'skip':
                     var server = servers[message.guild.id];
                     if(server.dispatcher) server.dispatcher.end();
                     message.channel.send("Skipping the song!");
                     break;
-                case 'stop':
+        case 'stop':
                     var server = servers[message.guild.id];
                     if(message.guild.voiceConnection){
                         for(var i = server.queue.length -1; i >=0; i--){
