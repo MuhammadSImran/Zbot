@@ -174,27 +174,80 @@ bot.on('message', message => {
             message.channel.send(embed);
             break;
             
-        case 'play':
-            let url = args[1];
-            let VoiceChannel = message.guild.channels.find(channel => channel.id === '673584048576397335');
-            if (VoiceChannel != null){
-                console.log(VoiceChannel.name +"was found and is a " + VoiceChannel.type + "channel.");
-                VoiceChannel.join()
-                .then (connection => {
-                    console.log("Bot joined the channel.");
-                    const stream = ytdl(url, { filter : 'audioonly'});
-                    const dispatcher = connection.playStream(stream, streamOptions);
+            case 'play':
 
 
-                    dispatcher.on('end', () => {
-                        VoiceChannel.leave();
+                function play(connection,message){
+        
+                    var server = servers[message.guild.id];
+        
+                    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
+        
+        
+                    server.queue.shift();
+        
+                    server.dispatcher.on("end", function(){
+                        if(server.queue[0]){
+                            play(connection, message);
+                        }else{
+                            connection.disconnect();
+                        }
+                    });
+                }
+        
+        
+        
+        
+                    if(!args[1]){
+                        message.channel.send("You must provide a link!");
+                        return;
+                    }
+        
+                    if(!message.member.voiceChannel){
+                        message.channel.send("You must be in a channel to play the bot!");
+                        return;
+                    }
+        
+                    if(!servers[message.guild.id]) servers[message.guild.id] = {
+                        queue:[]
+                    }
+        
+                    var server = servers[message.guild.id];
+        
+        
+                    server.queue.push(args[1]);
+        
+                    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+                        play(connection, message);
                     })
-                })
-                .catch();
-            }
+        
+        
+                break;
+        
+        
+                case 'skip':
+                    var server = servers[message.guild.id];
+                    if(server.dispatcher) server.dispatcher.end();
+                    message.channel.send("Skipping the song!");
+                    break;
+                case 'stop':
+                    var server = servers[message.guild.id];
+                    if(message.guild.voiceConnection){
+                        for(var i = server.queue.length -1; i >=0; i--){
+                            server.queue.splice(i,1);
+                        }
+        
+                        server.dispatcher.end();
+                        message.channel.send("Ending the queue, leaving the voice channel!")
+                        console.log('stopped the queue');
+        
+                    }
+        
+                    if(message.guild.connection) message.guild.voiceConnection.disconnect();        
+            
+            
 
     }
-})
+});
 
-
-bot.login(process.env.token);
+bot.login(token);
