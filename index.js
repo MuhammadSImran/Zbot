@@ -16,9 +16,28 @@ const token = "NjczNTgzNzE1OTA5MTA3NzIz.XjcJ0Q.hVYZLwytrQElSEG467rlAyz_ULI";
 
 const usedCommandRecently = new Set();
 
+function play(connection,message){
+
+    var server = servers[message.guild.id];
+
+    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
+
+
+    server.queue.shift();
+
+    server.dispatcher.on("end", function(){
+        if(server.queue[0]){
+            play(connection, message);
+
+        }else{
+            connection.disconnect();
+        }
+    });
+}
+
 bot.on('ready', () => {
     console.log('Bot is Online');
-    bot.user.setActivity('AutoDesk Inventor Pro 2020', { type: 'PLAYING' }).catch(console.error);
+    bot.user.setActivity('Autodesk Inventor Professional 2020', { type: 'PLAYING' }).catch(console.error);
 });
 
 
@@ -170,60 +189,32 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
-            case 'play':
+        case 'play':
+            if(!args[1]){
+                message.channel.sendMessage("Please provide a link");
+                return;
+            }
+            if(!message.member.voiceChannel){
+                message.channel.send("You must be in a channel to play the bot!");
+                return;
+            }
 
+            if(!servers[message.guild.id]) servers[message.guild.id] = {
+              queue:[]  
+            };
 
-                function play(connection,message){
-        
-                    var server = servers[message.guild.id];
-        
-                    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
-        
-        
-                    server.queue.shift();
-        
-                    server.dispatcher.on("end", function(){
-                        if(server.queue[0]){
-                            play(connection, message);
-        
-                        }else{
-                            connection.disconnect();
-                        }
-                    });
-                }
-        
-        
-        
-        
-                    if(!args[1]){
-                        message.channel.send("You must provide a link!");
-                        return;
-                    }
-        
-                    if(!message.member.voiceChannel){
-                        message.channel.send("You must be in a channel to play the bot!");
-                        return;
-                    }
-        
-                    if(!servers[message.guild.id]) servers[message.guild.id] = {
-                        queue:[]
-                    }
-        
-                    var server = servers[message.guild.id];
-        
-        
-                    server.queue.push(args[1]);
-        
-                    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
-                        message.channel.send("Now playing: " + args[1]);
-                        play(connection, message);
-                        
-                    })
-        
-        
-                break;
+            var server = servers[message.guild.id];
+
+            if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+
+                message.channel.send("Now playing: " + args[1]);
+                play(connection, message);
+
+            });
+
+        break;
     }
 
 });
 
-bot.login(token);
+bot.login(process.env.token);
