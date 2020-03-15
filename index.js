@@ -20,12 +20,6 @@ bot.on('ready', () => {
     console.log('Bot is Online');
     bot.user.setActivity('AutoDesk Inventor Pro 2020', { type: 'PLAYING' }).catch(console.error);
 });
-bot.on('message', msg => {
-    if (msg.includes('asian')){
-        msg.reply('cough cough');
-    }
-});
-
 
 
 bot.on('guildMemberAdd', member => {
