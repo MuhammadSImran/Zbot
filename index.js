@@ -5,7 +5,6 @@ const{
 } = require('discord.js');
 const bot = new Client();
 
-var servers = {};
 
 const ytdl = require('ytdl-core');
 
@@ -41,18 +40,18 @@ bot.on('message', message => {
 
     switch (args[0]) {
         case 'help' :
-            message.author.send("-!help - sends you commands list.");
-            message.author.send("-!react - Zuahyr Reacts to you.");
-            message.author.send("-!ping - Pong!");
-            message.author.send("-!robotics - sends you robotics competion hunger games link.");
-            message.author.send("-!Website - sends you a website link.");
-            message.author.send("-!info version - sends you bot version.");
-            message.author.send("-!grammerly - sends you grammerly accounts list.");
-            message.author.send("-!user - shows user information.");
-            message.author.send("          Mod Commands        ");
-            message.author.send("-!clear - clears messages");
-            message.author.send("-!kick - kicks a user from the server.");
-            message.author.send("-!ban - bans the user from the server.");
+            message.channel.send("-!help - sends you commands list.");
+            message.channel.send("-!react - Zuahyr Reacts to you.");
+            message.channel.send("-!ping - Pong!");
+            message.channel.send("-!robotics - sends you robotics competion hunger games link.");
+            message.channel.send("-!Website - sends you a website link.");
+            message.channel.send("-!info version - sends you bot version.");
+            message.channel.send("-!grammerly - sends you grammerly accounts list.");
+            message.channel.send("-!user - shows user information.");
+            message.channel.send("          Mod Commands        ");
+            message.channel.send("-!clear - clears messages");
+            message.channel.send("-!kick - kicks a user from the server.");
+            message.channel.send("-!ban - bans the user from the server.");
             break;
 
         case 'react':
@@ -171,44 +170,6 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
-            case 'play':
-
-                function play(connection, message){
-                    var server = servers[message.guild.id];
-    
-                    server.dispatcher = connection.playStream(ytdl(server.queue[0],{filter: "audioonly"}));
-    
-                    server.queue.shift();
-    
-                    server.dispatcher.on("end", function(){
-                        if (server.queue[0]){
-                            play(connection, message);
-                        }else{
-                            connection.disconnect();
-                        }
-                    });
-                }
-    
-                if(!args[1]){
-                    message.channel.send("You must enter a youtube url!");
-                    return;
-                }
-                if(!message.member.voiceChannel){
-                    message.channel.send("You must be in a channel");
-                    return;
-                }
-                if(!servers[message.guild.id]) servers[message.guild.id] = {
-                queue: []
-                }
-                var server = servers[message.guild.id];
-    
-                server.queue.push(args[1]);
-    
-                if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
-    
-                    play(connection, message);
-                })
-                break;
             }
 });
 
