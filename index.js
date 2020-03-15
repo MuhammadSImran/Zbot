@@ -47,7 +47,7 @@ bot.on('message', message => {
             message.author.send("-!Website - sends you a website link.");
             message.author.send("-!info version - sends you bot version.");
             message.author.send("-!grammerly - sends you grammerly accounts list.");
-            message.author.send("-!user - shows user information.");
+           // message.author.send("-!user - shows user information.");
             message.author.send("          Mod Commands        ");
             message.author.send("-!clear - clears messages");
             message.author.send("-!kick - kicks a user from the server.");
@@ -170,6 +170,13 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
+        case 'sohaibmark':
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+              }
+              message.channel.sendMessage('Sohaib has a ' + (getRandomInt(50) + '%' ));
+              break;
+
             }
 });
 
