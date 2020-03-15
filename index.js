@@ -170,7 +170,60 @@ bot.on('message', message => {
                 .setThumbnail(message.author.avatarURL)
             message.channel.send(embed);
             break;
-        }
+            case 'play':
+
+
+                function play(connection,message){
+        
+                    var server = servers[message.guild.id];
+        
+                    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
+        
+        
+                    server.queue.shift();
+        
+                    server.dispatcher.on("end", function(){
+                        if(server.queue[0]){
+                            play(connection, message);
+        
+                        }else{
+                            connection.disconnect();
+                        }
+                    });
+                }
+        
+        
+        
+        
+                    if(!args[1]){
+                        message.channel.send("You must provide a link!");
+                        return;
+                    }
+        
+                    if(!message.member.voiceChannel){
+                        message.channel.send("You must be in a channel to play the bot!");
+                        return;
+                    }
+        
+                    if(!servers[message.guild.id]) servers[message.guild.id] = {
+                        queue:[]
+                    }
+        
+                    var server = servers[message.guild.id];
+        
+        
+                    server.queue.push(args[1]);
+        
+                    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+                        message.channel.send("Now playing: " + args[1]);
+                        play(connection, message);
+                        
+                    })
+        
+        
+                break;
+    }
+
 });
 
 bot.login(token);
