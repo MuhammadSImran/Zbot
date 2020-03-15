@@ -176,6 +176,11 @@ bot.on('message', message => {
               }
               message.channel.sendMessage('Sohaib has a ' + (getRandomInt(50) + '%' ));
               break;
+        case 'coronavirus':
+           function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+          }
+          message.reply('has a ' +getRandomInt(100) + '% chance of getting Corona Virus!' )
 
             }
 });
