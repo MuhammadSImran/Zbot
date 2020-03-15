@@ -21,7 +21,7 @@ bot.on('ready', () => {
     bot.user.setActivity('AutoDesk Inventor Pro 2020', { type: 'PLAYING' }).catch(console.error);
 });
 bot.on('message', msg => {
-    if (msg.content.toLowerCase().startsWith === "asian") {
+    if (msg.includes('asian') {
         msg.reply('cough cough');
     }
 });
@@ -32,8 +32,7 @@ bot.on('guildMemberAdd', member => {
     
     const channel = member.guild.channels.find(channel => channel.name == "welcome");
     if (!channel) return;
-    channel.send(`Welcome ${member}, to the Homeless Hallway!`)
-    if(!message.member.roles.find(r => r.name === "Homeless")){
+    channel.send(`Welcome ${member}, to the Homeless Hallway!`);
         let defaultrole = member.guild.roles.find("name", "Homeless");
         member.addRole(defaultrole);
     }
