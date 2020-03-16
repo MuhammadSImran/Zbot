@@ -38,7 +38,7 @@ bot.on('message', message => {
 
 
 
-    switch (args[0]) {
+    switch (args[0] == prefix) {
         case 'help' :
             message.author.send("-!help - sends you commands list.");
             message.author.send("-!react - Zuahyr Reacts to you.");
