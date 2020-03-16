@@ -174,13 +174,26 @@ bot.on('message', message => {
             function getRandomInt(max) {
                 return Math.floor(Math.random() * Math.floor(max));
               }
-              message.channel.sendMessage('Sohaib has a ' + (getRandomInt(50) + '%' ));
+              message.channel.sendMessage('Sohaib has a ' + (getRandomInt(51) + '%' ));
               break;
         case 'coronavirus':
            function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
           }
-          message.reply('has a ' +getRandomInt(100) + '% chance of getting Corona Virus!' )
+          message.reply('has a ' +getRandomInt(101) + '% chance of getting Corona Virus!' )
+          break;
+        case 'b':
+            message.delete();
+            let argsresult = args.slice(1),join(" ");
+            if(!message.member.roles.find(r => r.name === "Mod")){
+                message.reply("You don't have access to this command!")
+            }
+            else
+            {
+                if (!args[1]) return message.reply('Enter the announcement') //Specific Channel
+                message.channel.sendMessage(" **"+ argsresult + "**"); 
+                break;
+            }
 
             }
 });
