@@ -38,7 +38,7 @@ bot.on('message', message => {
 
 
 
-    switch (args[0] == prefix) {
+    switch (args[0]) {
         case 'help' :
             message.author.send("-!help - sends you commands list.");
             message.author.send("-!react - Zuahyr Reacts to you.");
@@ -177,6 +177,7 @@ bot.on('message', message => {
               if(usedCommandRecently.has(message.author.id)){
                 message.delete();
                 message.reply('You cannot use that command yet! Wait 1 minute!');
+                break;
             }
             else{
               message.channel.sendMessage('Sohaib has a ' + (getRandomInt(51) + '%' ));
