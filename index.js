@@ -177,7 +177,7 @@ bot.on('message', message => {
               if(usedCommandRecently.has(message.author.id)){
                 message.delete();
                 message.reply('You cannot use that command yet! Wait 1 minute!');
-                Delay(3);
+                setTimeout(3000);
                 message.delete();
             }
             else{
