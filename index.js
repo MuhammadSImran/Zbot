@@ -174,8 +174,20 @@ bot.on('message', message => {
             function getRandomInt(max) {
                 return Math.floor(Math.random() * Math.floor(max));
               }
+              if(usedCommandRecently.has(message.author.id)){
+                message.delete();
+                message.reply('You cannot use that command yet! Wait 1 minute!');
+                Delay(3);
+                message.delete();
+            }
+            else{
               message.channel.sendMessage('Sohaib has a ' + (getRandomInt(51) + '%' ));
+              usedCommandRecently.add(message.author.id);
+              setTimeout(() => {
+                  usedCommandRecently.delete(message.author.id);
+              }, 60000)
               break;
+            }
         case 'coronavirus':
            function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
