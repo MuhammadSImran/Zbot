@@ -186,7 +186,7 @@ bot.on('message', message => {
             message.delete();
             let argsresult = args.slice(1),join(" ");
             if(!message.member.roles.find(r => r.name === "Mod")){
-                message.reply("You don't have access to this command!")
+                message.reply("You don't have access to this command!");
             }
             else
             {
