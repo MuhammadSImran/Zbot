@@ -5,9 +5,7 @@ const{
 } = require('discord.js');
 const bot = new Client();
 
-
 const ytdl = require('ytdl-core');
-
 
 const prefix = '!';
 
@@ -186,6 +184,31 @@ bot.on('message', message => {
                   usedCommandRecently.delete(message.author.id);
               }, 60000)
               break;
+            }
+        case 'darimmark':
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+              }
+              if(!message.member.roles.find(r => r.name === "Mod")){
+                
+            
+              if(usedCommandRecently.has(message.author.id)){
+                message.delete();
+                message.reply('You cannot use that command yet! Wait 30 seconds!');
+                break;
+            }
+        }
+            else{
+              message.channel.sendMessage('Darim has a -' + (getRandomInt(99999) + '%' ));
+              usedCommandRecently.add(message.author.id);
+              if(!message.member.roles.find(r => r.name === "Mod")){
+                
+            
+              setTimeout(() => {
+                  usedCommandRecently.delete(message.author.id);
+              }, 30000)
+              break;
+            }
             }
         case 'coronavirus':
            function getRandomInt(max) {
