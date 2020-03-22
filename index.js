@@ -209,6 +209,7 @@ bot.on('message', message => {
               }, 30000)
               break;
             }
+            break;
             }
         case 'coronavirus':
            function getRandomInt(max) {
