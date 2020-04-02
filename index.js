@@ -197,9 +197,10 @@ bot.on('message', message => {
                 message.reply('You cannot use that command yet! Wait 30 seconds!');
                 break;
             }
+            break;
         }
             else{
-              message.channel.sendMessage('Darim has a -' + (getRandomInt(99999) + '%' ));
+              message.channel.sendMessage('@Potato Tomato#2109 has a -' + (getRandomInt(99999) + '%' ));
               usedCommandRecently.add(message.author.id);
               if(!message.member.roles.find(r => r.name === "Mod")){
                 
@@ -215,7 +216,16 @@ bot.on('message', message => {
            function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
           }
-          message.reply('has a ' +getRandomInt(101) + '% chance of getting Corona Virus!' )
+          var number = getRandomInt(101);
+          message.reply('has a ' +number + '% chance of getting Corona Virus!' )
+          if(number == 100){
+              message.reply("is going to die!!!")
+              break;
+          }
+          if(number == 0){
+              message.reply('is safe from the Corono!');
+              break;
+          }
           break;
         case 'b':
             message.delete();
