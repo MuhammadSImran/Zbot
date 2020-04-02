@@ -127,7 +127,6 @@ bot.on('message', message => {
                 }
             }
                 break;
-
         case 'ping':
             //message.reply('pong!'); //Specific Person
             message.channel.sendMessage('pong!'); //Specific Channel
@@ -200,7 +199,7 @@ bot.on('message', message => {
             break;
         }
             else{
-              message.channel.sendMessage('@Potato Tomato#2109 has a -' + (getRandomInt(99999) + '%' ));
+              message.channel.sendMessage('<@433653676679102474> has a -' + (getRandomInt(99999) + '%' ));
               usedCommandRecently.add(message.author.id);
               if(!message.member.roles.find(r => r.name === "Mod")){
                 
