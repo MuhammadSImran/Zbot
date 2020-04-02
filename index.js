@@ -218,7 +218,7 @@ bot.on('message', message => {
           var number = getRandomInt(101);
           message.reply('has a ' +number + '% chance of getting Corona Virus!' )
           if(number == 100){
-              message.reply("is going to die!!!")
+              message.reply("is going to cough!!! Everyone get a way from him!")
               break;
           }
           if(number == 0){
