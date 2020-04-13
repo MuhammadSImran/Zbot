@@ -171,53 +171,21 @@ bot.on('message', message => {
             function getRandomInt(max) {
                 return Math.floor(Math.random() * Math.floor(max));
               }
-              if(usedCommandRecently.has(message.author.id)){
-                message.delete();
-                message.reply('You cannot use that command yet! Wait 1 minute!');
-                break;
-            }
-            else{
               message.channel.sendMessage('Sohaib has a ' + (getRandomInt(51) + '%' ));
-              usedCommandRecently.add(message.author.id);
-              setTimeout(() => {
-                  usedCommandRecently.delete(message.author.id);
-              }, 60000)
               break;
-            }
         case 'darimmark':
             function getRandomInt(max) {
                 return Math.floor(Math.random() * Math.floor(max));
               }
-              if(!message.member.roles.find(r => r.name === "Mod")){
-                
-            
-              if(usedCommandRecently.has(message.author.id)){
-                message.delete();
-                message.reply('You cannot use that command yet! Wait 30 seconds!');
-                break;
-            }
-            break;
-        }
-            else{
               message.channel.sendMessage('<@433653676679102474> has a -' + (getRandomInt(99999) + '%' ));
-              usedCommandRecently.add(message.author.id);
-              if(!message.member.roles.find(r => r.name === "Mod")){
-                
-            
-              setTimeout(() => {
-                  usedCommandRecently.delete(message.author.id);
-              }, 30000)
-              break;
-            }
-            break;
-            }
+              break; 
         case 'coronavirus':
            function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
           }
           var number = getRandomInt(101);
           message.reply('has a ' +number + '% chance of getting Corona Virus!' )
-          if(number == 100){
+          if(number >= 90){
               message.reply("is going to cough!!! Everyone get a way from him!")
               break;
           }
@@ -238,7 +206,9 @@ bot.on('message', message => {
                 message.channel.sendMessage(" **"+ argsresult + "**"); 
                 break;
             }
-
+        case 'mcaccounts': 
+        message.channel.sendMessage('Here is the website where you can get free minecraft accounts : https://leak.sx/dispenser.php?generator=4');
+        break;
             }
 });
 
