@@ -209,6 +209,20 @@ bot.on('message', message => {
         case 'mcaccounts': 
         message.channel.sendMessage('Here is the website where you can get free minecraft accounts : https://leak.sx/dispenser.php?generator=4');
         break;
+        case 'markomark':
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+              }
+              var number = getRandomInt(101);
+        message.channel.sendMessage('Better than Pwanav by' + number + '%.' );
+        message.channel.sendMessage(':marko:');
+        break;
+        case 'sohaib':
+            message.channel.sendMessage('sohaib');
+            message.channel.sendMessage('haha'); 
+            message.channel.sendMessage('funny guy'); 
+            message.channel.sendMessage(':thumbsup:'); 
+            break;
             }
 });
 
