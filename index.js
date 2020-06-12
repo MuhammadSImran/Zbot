@@ -210,11 +210,11 @@ bot.on('message', message => {
         message.channel.sendMessage('Here is the website where you can get free minecraft accounts : https://leak.sx/dispenser.php?generator=4');
         break;
         case 'markomark':
-            function getRandomInt(max) {
+            function getRandomDouble(max) {
                 return Math.floor(Math.random() * Math.floor(max));
               }
-              var number = getRandomInt(101);
-        message.channel.sendMessage('Better than Pwanav by' + number + '%.' );
+              var number = getRandomDouble(1000000000);
+        message.channel.sendMessage('Better than Pwanav by ' + number + '%.' );
         message.channel.sendMessage(':marko:');
         break;
         case 'sohaib':
