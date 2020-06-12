@@ -215,7 +215,7 @@ bot.on('message', message => {
               }
               var number = getRandomDouble(1000000000);
         message.channel.sendMessage('Better than Pwanav by ' + number + '%.' );
-        message.channel.sendMessage('\:marko:');
+        message.channel.sendMessage('\:marko:688768510075207683');
         break;
         case 'sohaib':
             message.channel.sendMessage('sohaib');
