@@ -37,7 +37,7 @@ bot.on('message', message => {
         message.channel.sendMessage('haha'); 
         message.channel.sendMessage('funny guy'); 
         message.channel.sendMessage(':thumbsup:'); 
-        break;
+        
     }
 
     let args = message.content.substring(prefix.length).split(" ");
