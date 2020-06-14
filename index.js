@@ -32,6 +32,14 @@ bot.on('guildMemberAdd', member => {
 
 bot.on('message', message => {
 
+    if(message.content.includes('Sohaib'.toLowerCase)) {
+        message.channel.sendMessage('sohaib');
+        message.channel.sendMessage('haha'); 
+        message.channel.sendMessage('funny guy'); 
+        message.channel.sendMessage(':thumbsup:'); 
+        break;
+    }
+
     let args = message.content.substring(prefix.length).split(" ");
 
 
