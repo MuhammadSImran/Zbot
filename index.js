@@ -209,40 +209,40 @@ bot.on('message', message => {
            var number = getRandomInt(101);
            message.reply('has a ' +number + '% mark!' )
            if(number == 100){
-            message.reply("They have a hundred! Congratulations you now have 1% of Marko's IQ! :marko:")
+            message.channel.sendMessage("They have a hundred! Congratulations you now have 1% of Marko's IQ! :marko:756981106619711549")
             break;
         }
         else if(number >= 95){
-            message.reply("You got a Pranav mark! :pranav: But CHOKED so you didn't get a 100!")
+            message.channel.sendMessage("You got a Pranav mark! :pranav:756980746195042365 But CHOKED so you didn't get a 100!")
             break;
         }
           else if(number >= 90){
-               message.reply("They only have a " + number + "% Why no 100? :darim:")
+               message.channel.sendMessage("They only have a " + number + "% Why no 100? :darim:")
                break;
            }
            else if(number >= 80 && number < 90){
-            message.reply("They only have a " + number + "% Get better kid...")
+            message.channel.sendMessage("They only have a " + number + "% Get better kid... :manuga:756981155126968463")
             break;
         }
         else if(number >= 70 && number < 90){
-            message.reply("They only have a " + number + "% That is a bruh moment")
+            message.channel.sendMessage("They only have a " + number + "% That is a bruh moment...")
             break;
         }
         else if(number >= 50 && number < 70){
-            message.reply("They only have a " + number + "% Who cares about marks anyways? School is temporary, gaming is forever.")
+            message.channel.sendMessage("They only have a " + number + "% Who cares about marks anyways? School is temporary, gaming is forever.")
             break;
         }
         else if(number >= 21 && number < 50){
-            message.reply("They only have a " + number + "% They didn't pass :(")
+            message.channel.sendMessage("They only have a " + number + "% They didn't pass :(")
             break;
         }
            
           else if(number <= 20){
-               message.reply('Thats almost as bad as a sohaibmark! :sohaib:');
+               message.channel.sendMessage('Thats almost as bad as a sohaibmark! :sohaib:756981451777376346');
                break;
            }
            else if(number == 0){
-            message.reply("You got a sohaib mark! :sohaib:")
+            message.channel.sendMessage("You got a sohaib mark! :sohaib:756980664783470714")
             break;
         }
            break;
