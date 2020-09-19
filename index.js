@@ -16,7 +16,7 @@ const usedCommandRecently = new Set();
 
 bot.on('ready', () => {
     console.log('Bot is Online');
-    bot.user.setActivity('Autodesk Inventor Professional 2020', { type: 'PLAYING' }).catch(console.error);
+    bot.user.setActivity('DEPRESSION SIMULATOR', { type: 'PLAYING' }).catch(console.error);
 });
 
 
@@ -202,6 +202,50 @@ bot.on('message', message => {
               break;
           }
           break;
+        case 'mymark':
+            function getRandomInt(max) {
+             return Math.floor(Math.random() * Math.floor(max));
+           }
+           var number = getRandomInt(101);
+           message.reply('has a ' +number + '% mark!' )
+           if(number == 100){
+            message.reply("They have a hundred! Congratulations you now have 1% of Marko's IQ! :marko:")
+            break;
+        }
+        else if(number >= 95){
+            message.reply("You got a Pranav mark! :pranav: But CHOKED so you didn't get a 100!")
+            break;
+        }
+          else if(number >= 90){
+               message.reply("They only have a" + number + "Why no 100? :darim:")
+               break;
+           }
+           else if(number => 80 && number < 90){
+            message.reply("They only have a" + number + "Get better kid...")
+            break;
+        }
+        else if(number => 70 && number < 90){
+            message.reply("They only have a" + number + "That is a bruh moment")
+            break;
+        }
+        else if(number => 50 && number < 70){
+            message.reply("They only have a" + number + "Who cares about marks anyways? School is temporary, gaming is forever.")
+            break;
+        }
+        else if(number => 21 && number < 50){
+            message.reply("They only have a" + number + "They didn't pass :(")
+            break;
+        }
+           
+          else if(number <= 20){
+               message.reply('Thats almost as bad as a sohaibmark! :sohaib:');
+               break;
+           }
+           else if(number == 0){
+            message.reply("You got a sohaib mark! :sohaib:")
+            break;
+        }
+           break;
         case 'b':
             message.delete();
             let argsresult = args.slice(1).join(" ");
