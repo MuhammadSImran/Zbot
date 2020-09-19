@@ -209,7 +209,7 @@ bot.on('message', message => {
            var number = getRandomInt(101);
            message.reply('has a ' +number + '% mark!' )
            if(number == 100){
-            message.channel.sendMessage("They have a hundred! Congratulations you now have 1% of Marko's IQ! :marko:756981106619711549")
+            message.channel.sendMessage("They have a hundred! Congratulations you now have 1% of Marko's IQ! <:marko:756981106619711549>")
             break;
         }
         else if(number >= 95){
@@ -217,11 +217,11 @@ bot.on('message', message => {
             break;
         }
           else if(number >= 90){
-               message.channel.sendMessage("They only have a " + number + "% Why no 100? :darim:")
+               message.channel.sendMessage("They only have a " + number + "% Why no 100? <:darim:756982325086257192>")
                break;
            }
            else if(number >= 80 && number < 90){
-            message.channel.sendMessage("They only have a " + number + "% Get better kid... :manuga:756981155126968463")
+            message.channel.sendMessage("They only have a " + number + "% Get better kid... <:manuga:756981155126968463>")
             break;
         }
         else if(number >= 70 && number < 90){
@@ -238,11 +238,11 @@ bot.on('message', message => {
         }
            
           else if(number <= 20){
-               message.channel.sendMessage('Thats almost as bad as a sohaibmark! :sohaib:756981451777376346');
+               message.channel.sendMessage('Thats almost as bad as a sohaibmark! <:sohaib:756981451777376346>');
                break;
            }
            else if(number == 0){
-            message.channel.sendMessage("You got a sohaib mark! :sohaib:756980664783470714")
+            message.channel.sendMessage("You got a sohaib mark! <:sohaib:756980664783470714>")
             break;
         }
            break;
