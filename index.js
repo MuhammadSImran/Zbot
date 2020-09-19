@@ -213,7 +213,7 @@ bot.on('message', message => {
             break;
         }
         else if(number >= 95){
-            message.channel.sendMessage("You got a Pranav mark! :pranav:756980746195042365 But CHOKED so you didn't get a 100!")
+            message.channel.sendMessage("You got a Pranav mark! <:pranav:756980746195042365> But CHOKED so you didn't get a 100!")
             break;
         }
           else if(number >= 90){
