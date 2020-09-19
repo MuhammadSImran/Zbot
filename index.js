@@ -217,23 +217,23 @@ bot.on('message', message => {
             break;
         }
           else if(number >= 90){
-               message.reply("They only have a " + number + " Why no 100? :darim:")
+               message.reply("They only have a " + number + "% Why no 100? :darim:")
                break;
            }
            else if(number => 80 && number < 90){
-            message.reply("They only have a " + number + " Get better kid...")
+            message.reply("They only have a " + number + "% Get better kid...")
             break;
         }
         else if(number => 70 && number < 90){
-            message.reply("They only have a " + number + " That is a bruh moment")
+            message.reply("They only have a " + number + "% That is a bruh moment")
             break;
         }
         else if(number => 50 && number < 70){
-            message.reply("They only have a " + number + " Who cares about marks anyways? School is temporary, gaming is forever.")
+            message.reply("They only have a " + number + "% Who cares about marks anyways? School is temporary, gaming is forever.")
             break;
         }
         else if(number => 21 && number < 50){
-            message.reply("They only have a " + number + " They didn't pass :(")
+            message.reply("They only have a " + number + "% They didn't pass :(")
             break;
         }
            
