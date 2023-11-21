@@ -9,7 +9,7 @@ const ytdl = require('ytdl-core');
 
 const prefix = '!';
 
-const token = "NjczNTgzNzE1OTA5MTA3NzIz.XjcJ0Q.hVYZLwytrQElSEG467rlAyz_ULI";
+const token = "private :> ";
 
 const usedCommandRecently = new Set();
 
@@ -258,9 +258,6 @@ bot.on('message', message => {
                 message.channel.sendMessage(" **"+ argsresult + "**"); 
                 break;
             }
-        case 'mcaccounts': 
-        message.channel.sendMessage('Here is the website where you can get free minecraft accounts : https://leak.sx/dispenser.php?generator=4');
-        break;
         case 'markomark':
             function getRandomDouble(max) {
                 return Math.floor(Math.random() * Math.floor(max));
